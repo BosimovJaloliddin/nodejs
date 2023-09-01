@@ -1,31 +1,33 @@
-let path = require("path");
-let fs = require("fs");
+// ================================================
 
-fs.writeFile(
-  path.join(__dirname, "node", "text.txt"),
-  "New text file",
-  (err) => {
-    if (err) throw new Error();
+// let path = require("path");
+// let fs = require("fs");
 
-    console.log("create new file");
-  }
-);
+// fs.writeFile(
+//   path.join(__dirname, "node", "text.txt"),
+//   "New text file",
+//   (err) => {
+//     if (err) throw new Error();
 
-fs.appendFile(
-  path.join(__dirname, "node", "text.txt"),
-  " and new info",
-  (err) => {
-    if (err) throw new Error();
+//     console.log("create new file");
+//   }
+// );
 
-    console.log("add new info");
-  }
-);
+// fs.appendFile(
+//   path.join(__dirname, "node", "text.txt"),
+//   " and new info",
+//   (err) => {
+//     if (err) throw new Error();
 
-fs.readFile(path.join(__dirname, "node", "text.txt"), "utf-8", (err, data) => {
-  if (err) throw new Error();
+//     console.log("add new info");
+//   }
+// );
 
-  console.log(data);
-});
+// fs.readFile(path.join(__dirname, "node", "text.txt"), "utf-8", (err, data) => {
+//   if (err) throw new Error();
+
+//   console.log(data);
+// });
 
 //======================================================
 
