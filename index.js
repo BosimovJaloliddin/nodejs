@@ -67,22 +67,56 @@
 // });
 
 //=========================================
+// const http = require("http");
+
+// const server = http.createServer((req, res) => {
+//   if (req.method === "GET") {
+//     res.writeHead(200, { "content-type": "text/html" });
+
+//     res.end(`
+//         <h2>Tayping Name:</h2>
+//         <form method="post" action="/">
+//             <input name="text" type="text" placeholder="name"/>
+//             <button type="submit">Push</button>
+//         </form>
+//         `);
+//   } else if (req.method === "POST") {
+//     res.writeHead(200, { "content-type": "text/html ; charset=utf-8" });
+
+//     let info = [];
+
+//     req.on("data", (data) => {
+//       info.push(Buffer.from(data));
+//     });
+
+//     req.on("end", () => {
+//       let message = info.toString().split("=")[1];
+
+//       res.end(`User name: ${message}`);
+//     });
+//   }
+// });
+
+// server.listen(3000, () => {
+//   console.log("localehost:3000");
+// });
+
+//=========================================================
 const http = require("http");
 
 const server = http.createServer((req, res) => {
+  console.log(req.method);
   if (req.method === "GET") {
-    res.writeHead(200, { "content-type": "text/html" });
+    res.writeHead(200, { "Content-type": "text/html; charset=utf-8" });
 
     res.end(`
-        <h2>Tayping Name:</h2>
-        <form method="post" action="/">
-            <input name="text" type="text" placeholder="name"/>
-            <button type="submit">Push</button>
-        </form>
-        `);
+      <h2>Get Name and Surname</h2>
+      <form method="post" action="/">
+      <input name="name" type="text" placeholder="Name"/>
+      <button type="submit">Push</button>
+      </form>
+      `);
   } else if (req.method === "POST") {
-    res.writeHead(200, { "content-type": "text/html ; charset=utf-8" });
-
     let info = [];
 
     req.on("data", (data) => {
@@ -90,13 +124,12 @@ const server = http.createServer((req, res) => {
     });
 
     req.on("end", () => {
-      let message = info.toString().split("=")[1];
-
-      res.end(`User name: ${message}`);
+      let name = info.toString().split("=")[1];
+      res.end(`User Name : ${name}`);
     });
   }
 });
 
-server.listen(3000, () => {
-  console.log("localehost:3000");
+server.listen(1231, () => {
+  console.log("LocaleHost Server : 1231");
 });
