@@ -4,7 +4,8 @@
   "description": "NodeJs start",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "NodeJs"
@@ -13,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.3.1",
-    "jquery": "^3.7.0"
+    "jquery": "^3.7.0",
+    "nodemon": "^3.0.1"
   }
 }

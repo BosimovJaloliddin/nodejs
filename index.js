@@ -1,6 +1,6 @@
-const os = require("os");
+// const os = require("os");
 
-console.log(os.homedir());
+// console.log(os.homedir());
 // console.log(os.totalmem());
 // console.log(os.freemem());
 // console.log(os.arch());
@@ -50,3 +50,18 @@ console.log(os.homedir());
 
 //   console.log("Create file");
 // });
+
+//===========================================
+let http = require("http");
+
+let server = http.createServer((req, res) => {
+  req.url;
+  res.write("<h1>Hellow World 20</h1>");
+  res.write("<h1>404</h1>");
+  res.write("<h1>Hi</h1>");
+  res.end();
+});
+
+server.listen(8081, () => {
+  console.log("create localhost 3000");
+});
