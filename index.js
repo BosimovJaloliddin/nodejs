@@ -103,19 +103,64 @@
 
 //=========================================================
 const http = require("http");
+const fs = require("fs");
+const path = require("path");
+
+// const server = http.createServer((req, res) => {
+//   if (req.method === "GET") {
+//     if (req.url === "/") {
+//       fs.readFile(path.join(__dirname, "index.html"), (err, data) => {
+//         if (err) throw err;
+
+//         res.end(data);
+//       });
+//     } else if (req.url === "/api/admin") {
+//       res.writeHead(200, { "Content-Type": "text/json" });
+//       let obj = {
+//         name: "Jaloliddin",
+//         surname: "Bosimov",
+//         job: "Fullstace dev",
+//       };
+//       res.end(JSON.stringify(obj));
+//     }
+//   }
+// });
+
+// server.listen(3000, () => {
+//   console.log("Create server : 30000");
+// });
 
 const server = http.createServer((req, res) => {
-  console.log(req.method);
   if (req.method === "GET") {
-    res.writeHead(200, { "Content-type": "text/html; charset=utf-8" });
+    // res.writeHead(200, { "Content-type": "text/html; charset=utf-8" });
+    if (req.url === "/") {
+      fs.readFile(path.join(__dirname, "index.html"), "utf-8", (err, data) => {
+        if (err) throw Error();
 
-    res.end(`
-      <h2>Get Name and Surname</h2>
-      <form method="post" action="/">
-      <input name="name" type="text" placeholder="Name"/>
-      <button type="submit">Push</button>
-      </form>
-      `);
+        res.end(data);
+      });
+    } else if (req.url === "/about") {
+      fs.readFile(path.join(__dirname, "about.html"), (err, data) => {
+        if (err) throw Error();
+
+        res.end(data);
+      });
+    } else if (req.url === "/contact") {
+      fs.readFile(path.join(__dirname, "contact.html"), (err, data) => {
+        if (err) throw err;
+
+        res.end(data);
+      });
+    } else if (req.url === "/api/admin") {
+      res.writeHead(200, { "content-type": "text/json" });
+      let admin = {
+        name: "Jaloliddin",
+        surname: "Bosimov",
+        job: "Fullstace dev",
+      };
+
+      res.end(JSON.stringify(admin));
+    }
   } else if (req.method === "POST") {
     let info = [];
 
@@ -130,6 +175,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(1231, () => {
+server.listen(3000, () => {
   console.log("LocaleHost Server : 1231");
 });
